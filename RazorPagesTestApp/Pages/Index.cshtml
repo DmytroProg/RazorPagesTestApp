@@ -1,0 +1,68 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Full Name</th>
+            <th>Last Logged In</th>
+            <th>Presence</th>
+            <th>Is Online</th>
+            <th>Grade</th>
+            <th>Diamonds</th>
+            <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.FullName</td>
+                    <td>@student.LastLoggedIn.ToShortDateString()</td>
+                    <td>
+                        <div class="radio-input">
+                            <input checked="" class="input green" type="radio" name="radio" />
+                            <input class="input yellow" type="radio" name="radio" />
+                            <input class="input red" type="radio" name="radio" />
+                        </div>
+
+                    </td>
+                    <td>
+                        <label class="cl-checkbox">
+                            <input checked="" type="checkbox">
+                            <span></span>
+                        </label>
+                        
+                    </td>
+                    <td>
+                        <select>
+                            @for (int i = 1; i <= 12; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <div class="rating">
+                            <input value="3" name="rating" id="star3" type="radio">
+                            <label for="star3"></label>
+                            <input value="2" name="rating" id="star2" type="radio">
+                            <label for="star2"></label>
+                            <input value="1" name="rating" id="star1" type="radio">
+                            <label for="star1"></label>
+                        </div>
+
+
+                    </td>
+                    <td>@student.Comment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

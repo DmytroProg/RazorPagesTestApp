@@ -1,0 +1,260 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* From Uiverse.io by SupportHotline */
+.input {
+  -webkit-appearance: none;
+  /* remove default */
+  margin: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  vertical-align: middle;
+  box-shadow: hsla(0, 0%, 100%, 0.15) 0 1px 1px,
+  inset hsla(0, 0%, 0%, 0.5) 0 0 0 1px;
+  background-color: hsla(0, 0%, 0%, 0.2);
+  background-repeat: no-repeat;
+  -webkit-transition: background-position 0.15s cubic-bezier(0.8, 0, 1, 1),
+  -webkit-transform 0.25s cubic-bezier(0.8, 0, 1, 1);
+  outline: none;
+}
+
+.input.green {
+  background-image: -webkit-radial-gradient(
+          hsla(118, 100%, 90%, 1) 0%,
+          hsla(118, 100%, 70%, 1) 15%,
+          hsla(118, 100%, 60%, 0.3) 28%,
+          hsla(118, 100%, 30%, 0) 70%
+  );
+}
+
+.input.yellow {
+  background-image: -webkit-radial-gradient(
+          hsla(50, 100%, 90%, 1) 0%,
+          hsla(50, 100%, 70%, 1) 15%,
+          hsla(50, 100%, 60%, 0.3) 28%,
+          hsla(50, 100%, 30%, 0) 70%
+  );
+}
+
+.input.red {
+  background-image: -webkit-radial-gradient(
+          hsla(0, 100%, 90%, 1) 0%,
+          hsla(0, 100%, 70%, 1) 15%,
+          hsla(0, 100%, 60%, 0.3) 28%,
+          hsla(0, 100%, 30%, 0) 70%
+  );
+}
+
+.input:checked {
+  -webkit-transition: background-position 0.2s 0.15s cubic-bezier(0, 0, 0.2, 1),
+  -webkit-transform 0.25s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.input:active {
+  -webkit-transform: scale(1.5);
+  -webkit-transition: -webkit-transform 0.1s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* The up/down direction logic */
+
+.input,
+.input:active {
+  background-position: 24px 0;
+}
+
+.input:checked {
+  background-position: 0 0;
+}
+
+.input:checked ~ .input,
+.input:checked ~ .input:active {
+  background-position: -24px 0;
+}
+
+/* From Uiverse.io by PriyanshuGupta28 */
+.rating {
+    display: inline-block;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.rating label:before {
+    content: '\2605';
+    font-size: 30px;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #8e8e00;
+    transition: color 0.3s;
+}
+
+/* From Uiverse.io by lenin55 */
+.cl-checkbox {
+    position: relative;
+    display: inline-block;
+}
+
+/* Input */
+.cl-checkbox > input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    z-index: -1;
+    position: absolute;
+    left: -10px;
+    top: -8px;
+    display: block;
+    margin: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: none;
+    outline: none;
+    opacity: 0;
+    transform: scale(1);
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+/* Span */
+.cl-checkbox > span {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Box */
+.cl-checkbox > span::before {
+    content: "";
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 3px 11px 3px 1px;
+    border: solid 2px;
+    /* Safari */
+    border-color: rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Checkmark */
+.cl-checkbox > span::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 1px;
+    width: 10px;
+    height: 5px;
+    border: solid 2px transparent;
+    border-right: none;
+    border-top: none;
+    transform: translate(3px, 4px) rotate(-45deg);
+}
+
+/* Checked, Indeterminate */
+.cl-checkbox > input:checked,
+.cl-checkbox > input:indeterminate {
+    background-color: #018786;
+}
+
+.cl-checkbox > input:checked + span::before,
+.cl-checkbox > input:indeterminate + span::before {
+    border-color: #018786;
+    background-color: #018786;
+}
+
+.cl-checkbox > input:checked + span::after,
+.cl-checkbox > input:indeterminate + span::after {
+    border-color: #fff;
+}
+
+.cl-checkbox > input:indeterminate + span::after {
+    border-left: none;
+    transform: translate(4px, 3px);
+}
+
+/* Hover, Focus */
+.cl-checkbox:hover > input {
+    opacity: 0.04;
+}
+
+.cl-checkbox > input:focus {
+    opacity: 0.12;
+}
+
+.cl-checkbox:hover > input:focus {
+    opacity: 0.16;
+}
+
+/* Active */
+.cl-checkbox > input:active {
+    opacity: 1;
+    transform: scale(0);
+    transition: transform 0s, opacity 0s;
+}
+
+.cl-checkbox > input:active + span::before {
+    border-color: #85b8b7;
+}
+
+.cl-checkbox > input:checked:active + span::before {
+    border-color: transparent;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Disabled */
+.cl-checkbox > input:disabled {
+    opacity: 0;
+}
+
+.cl-checkbox > input:disabled + span {
+    color: rgba(0, 0, 0, 0.38);
+    cursor: initial;
+}
+
+.cl-checkbox > input:disabled + span::before {
+    border-color: currentColor;
+}
+
+.cl-checkbox > input:checked:disabled + span::before,
+.cl-checkbox > input:indeterminate:disabled + span::before {
+    border-color: transparent;
+    background-color: currentColor;
+}
