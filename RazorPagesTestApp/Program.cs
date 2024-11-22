@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using RazorPagesTestApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<RazorPagesTestAppContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("RazorPagesTestAppContext") ?? throw new InvalidOperationException("Connection string 'RazorPagesTestAppContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RazorPagesTestAppContext") ??
+                         throw new InvalidOperationException(
+                             "Connection string 'RazorPagesTestAppContext' not found.")));
 
 var app = builder.Build();
 

@@ -8,8 +8,8 @@ namespace RazorPagesTestApp.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
     private readonly RazorPagesTestAppContext _context;
+    private readonly ILogger<IndexModel> _logger;
 
     public IndexModel(ILogger<IndexModel> logger, RazorPagesTestAppContext context)
     {
@@ -18,8 +18,7 @@ public class IndexModel : PageModel
         Students = new List<Student>();
     }
 
-    [BindProperty] 
-    public List<Student> Students { get; set; } = new();
+    [BindProperty] public List<Student> Students { get; set; } = new();
 
     public async Task<IActionResult> OnGetAsync()
     {
@@ -37,7 +36,7 @@ public class IndexModel : PageModel
             studentFromDb.Grade = student.Grade;
             studentFromDb.DiamondsCount = student.DiamondsCount;
         }
-        
+
         await _context.SaveChangesAsync();
         return RedirectToPage("Index");
     }
@@ -45,5 +44,16 @@ public class IndexModel : PageModel
     public IActionResult OnGetAddStudent()
     {
         return RedirectToPage("AddStudent");
+    }
+
+    public async Task<IActionResult> OnGetDeleteStudentAsync(int id)
+    {
+        var student = await _context.Student.FindAsync(id);
+
+        if (student == null) return NotFound();
+        
+        _context.Student.Remove(student);
+        await _context.SaveChangesAsync();
+        return RedirectToPage("Index");
     }
 }

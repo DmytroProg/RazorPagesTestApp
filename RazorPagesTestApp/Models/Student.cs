@@ -8,8 +8,7 @@ public class Student
     public string FirstName { get; set; }
     public string LastName { get; set; }
 
-    [NotMapped]
-    public string FullName => $"{LastName} {FirstName}";
+    [NotMapped] public string FullName => $"{LastName} {FirstName}";
 
     public DateTime LastLoggedIn { get; set; }
     public PresenceStatus PresenceType { get; set; }
