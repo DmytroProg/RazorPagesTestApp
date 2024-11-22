@@ -10,6 +10,13 @@ builder.Services.AddDbContext<RazorPagesTestAppContext>(options =>
                          throw new InvalidOperationException(
                              "Connection string 'RazorPagesTestAppContext' not found.")));
 
+builder.Services.AddSession(opt =>
+{
+    opt.IdleTimeout = TimeSpan.FromSeconds(10);
+    opt.Cookie.IsEssential = true;
+    opt.Cookie.HttpOnly = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +31,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 

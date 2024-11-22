@@ -22,6 +22,11 @@ public class IndexModel : PageModel
 
     public async Task<IActionResult> OnGetAsync()
     {
+        if (HttpContext.Session.GetString("nickname") == null)
+        {
+            return RedirectToPage("Login");
+        }
+        
         Students = await _context.Student.ToListAsync();
         return Page();
     }
