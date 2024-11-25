@@ -25,45 +25,8 @@
             {
                 <input type="hidden" asp-for="@Model.Students[i].Id"/>
                 <tr>
-                    <td>@Model.Students[i].Id</td>
-                    <td>@Model.Students[i].FullName</td>
-                    <td>@Model.Students[i].LastLoggedIn.ToShortDateString()</td>
-                    <td>
-
-                        <div class="radio-input">
-                            <input class="input green" type="radio" id="option1-@i" value="Present" asp-for="@Model.Students[i].PresenceType"/>
-                            <input class="input yellow" type="radio" id="option2-@i" value="Late" asp-for="@Model.Students[i].PresenceType"/>
-                            <input class="input red" type="radio" id="option3-@i" value="Absent" asp-for="@Model.Students[i].PresenceType"/>
-                        </div>
-                    </td>
-                    <td>
-                        <input type="checkbox" asp-for="@Model.Students[i].IsOnline">
-                    </td>
-                    <td>
-                        <select asp-for="@Model.Students[i].Grade">
-                            @for (var j = 1; j <= 12; j++)
-                            {
-                                if (Model.Students[i].Grade == j)
-                                {
-                                    <option selected value="@j">@j</option>
-                                }
-                                else
-                                {
-                                    <option value="@j">@j</option>
-                                }
-                            }
-                        </select>
-                    </td>
-                    <td>
-                        <div class="rating">
-                            @for (var j = 3; j >= 1; j--)
-                            {
-                                <input value="@j" id="star@(j + "-" + i)" type="radio" asp-for="@Model.Students[i].DiamondsCount">
-                                <label for="star@(j + "-" + i)">&#x2605</label>
-                            }
-                        </div>
-                    </td>
-                    <td>@Model.Students[i].Comment</td>
+                    @*@Html.Partial("StudentRow.cshtml", new StudentRowModel() { Student = Model.Students[i] });*@
+                    <partial name="StudentRow.cshtml" model="@Model.Students[i]"/>
                     <td>
                         <a asp-page="UpdateStudent" asp-route-id="@Model.Students[i].Id">Edit</a>
                         <a asp-page-handler="DeleteStudent" asp-route-id="@Model.Students[i].Id">Delete</a>

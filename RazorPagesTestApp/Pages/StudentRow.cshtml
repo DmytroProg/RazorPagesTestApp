@@ -1,0 +1,42 @@
+﻿@model RazorPagesTestApp.Models.Student
+
+                    <td>@Model.Id</td>
+                    <td>@Model.FullName</td>
+                    <td>@Model.LastLoggedIn.ToShortDateString()</td>
+                    <td>
+
+                        <div class="radio-input">
+                            <input class="input green" type="radio" id="presence-1-@Model.Id" value="Present" asp-for="@Model.PresenceType"/>
+                            <input class="input yellow" type="radio" id="presence-2-@Model.Id" value="Late" asp-for="@Model.PresenceType"/>
+                            <input class="input red" type="radio" id="presence-3-@Model.Id" value="Absent" asp-for="@Model.PresenceType"/>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="checkbox" asp-for="@Model.IsOnline">
+                    </td>
+                    <td>
+                        <select asp-for="@Model.Grade">
+                            @for (var j = 1; j <= 12; j++)
+                            {
+                                if (Model.Grade == j)
+                                {
+                                    <option selected value="@j">@j</option>
+                                }
+                                else
+                                {
+                                    <option value="@j">@j</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <div class="rating">
+                            @for (var j = 3; j >= 1; j--)
+                            {
+                                <input value="@j" type="radio" id="star-@(Model.Id * 10 + j)" asp-for="@Model.DiamondsCount">
+                                <label>&#x2605</label>
+                            }
+                        </div>
+                    </td>
+                    <td>@Model.Comment</td>
+                    
